@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MvcProject.Models.Entities.Book>
+@{
+    ViewBag.Title = "AllBooks";
+}
+
+<a asp-action="Create">Add book</a>
+
+<table class="table">
+    <tr><th>Name</th><th>Author</th><th></th></tr>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Name</td>
+            <td>@book.Author</td>
+            <td>
+                <form asp-action="DeleteBook" asp-route-id="@book.Id" method="post">
+                    <a class="btn btn-sm btn-primary" asp-action="EditBook" asp-route-id="@book.Id">Edit</a>
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Remove
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
