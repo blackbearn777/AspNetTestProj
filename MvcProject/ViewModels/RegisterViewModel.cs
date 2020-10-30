@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MvcProject.ViewModels
 {
@@ -11,10 +7,6 @@ namespace MvcProject.ViewModels
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
-        [Required]
-        [Display(Name = "Год рождения")]
-        public int Year { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -27,5 +19,9 @@ namespace MvcProject.ViewModels
         [DataType(DataType.Password)]
         [Display(Name = "Подтвердить пароль")]
         public string PasswordConfirm { get; set; }
+
+        [Required]
+        [Display(Name = "Год рождения")]
+        public int Year { get; set; }
     }
 }

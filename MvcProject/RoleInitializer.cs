@@ -1,14 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MvcProject.Models;
-using MvcProject.Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MvcProject
 {
-
     //class to test roles//
     public class RoleInitializer
     {

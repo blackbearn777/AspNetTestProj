@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MvcProject.Models;
 using MvcProject.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MvcProject.Controllers
 {
     public class RolesController : Controller
     {
-        RoleManager<IdentityRole> _roleManager;
-        UserManager<User> _userManager;
+        private RoleManager<IdentityRole> _roleManager;
+        private UserManager<User> _userManager;
+
         public RolesController(RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
         }
-        public IActionResult Index() => View(_roleManager.Roles.ToList());
 
         public IActionResult Create() => View();
+
         [HttpPost]
         public async Task<IActionResult> Create(string name)
         {
@@ -53,8 +53,6 @@ namespace MvcProject.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult UserList() => View(_userManager.Users.ToList());
-
         public async Task<IActionResult> Edit(string userId)
         {
             User user = await _userManager.FindByIdAsync(userId);
@@ -73,6 +71,7 @@ namespace MvcProject.Controllers
             }
             return NotFound();
         }
+
         [HttpPost]
         public async Task<IActionResult> Edit(string userId, List<string> roles)
         {
@@ -89,5 +88,8 @@ namespace MvcProject.Controllers
             }
             return NotFound();
         }
+
+        public IActionResult Index() => View(_roleManager.Roles.ToList());
+        public IActionResult UserList() => View(_userManager.Users.ToList());
     }
 }
